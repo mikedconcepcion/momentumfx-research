@@ -1,0 +1,393 @@
+//@version=5
+indicator("Momentum FX - Order Block Zones [6Y Validated]", overlay=true, max_boxes_count=50, max_lines_count=50)
+
+// ============================================================================
+// MOMENTUM FX RESEARCH - 6-YEAR VALIDATION (2020-2025)
+// ============================================================================
+// Research: Periodic Institutional Order Flow and Supply-Demand Zone Formation
+// Validated: 2.4M bars, 99.9%+ statistical confidence (p<0.001)
+// Pattern strengthened during COVID crash (2.80x concentration)
+//
+// KEY FINDINGS:
+// - Zones form 2.56x more during Order Block (OB) time windows
+// - OB Windows: xx:55-05 (hourly) + xx:30±3 (half-hourly)
+// - Best instrument: XAUUSD (95.3% OB concentration)
+//
+// MULTI-TIMEFRAME APPROACH:
+// - M5: Zone detection (this indicator detects zones)
+// - M15: Primary analysis timeframe
+// - H1: Trend direction confirmation
+//
+// Contact: momentumfxtrading25@gmail.com
+// Research: https://mikedconcepcion.github.io/momentumfx-research/
+// ============================================================================
+
+// ============================================================================
+// SETTINGS
+// ============================================================================
+
+// Zone Detection Settings
+var g1 = "═══════════ ZONE DETECTION ═══════════"
+minConsolidation = input.int(3, "Min Consolidation Candles", minval=2, maxval=10, group=g1, tooltip="Minimum candles in consolidation before breakout")
+zoneWidthATR = input.float(0.5, "Zone Width (ATR)", minval=0.1, maxval=2.0, step=0.1, group=g1, tooltip="Zone width as multiple of ATR (0.5 = validated)")
+minVelocityATR = input.float(1.0, "Min Breakout Velocity (ATR)", minval=0.5, maxval=3.0, step=0.1, group=g1, tooltip="Minimum breakout strength (1.0 = validated)")
+maxZoneAge = input.int(50, "Max Zone Age (bars)", minval=10, maxval=200, group=g1, tooltip="How long to show zones before removing")
+
+// Order Block Time Windows
+var g2 = "═══════════ ORDER BLOCK WINDOWS ═══════════"
+enableOBFilter = input.bool(true, "Enable OB Time Filter", group=g2, tooltip="Only show zones formed during OB windows (validated: 2.56x concentration)")
+hourlyWindowMins = input.int(5, "Hourly Turn Window (±mins)", minval=3, maxval=10, group=g2, tooltip="xx:55-05 UTC (validated: 5 minutes)")
+halfHourWindowMins = input.int(3, "Half-Hour Window (±mins)", minval=2, maxval=5, group=g2, tooltip="xx:30±3 UTC (validated: 3 minutes)")
+showOBBackground = input.bool(true, "Show OB Window Background", group=g2, tooltip="Highlight when in OB time window")
+
+// Trend Filter (H1 for trend)
+var g3 = "═══════════ TREND FILTER (H1) ═══════════"
+enableTrendFilter = input.bool(true, "Enable Trend Filter", group=g3, tooltip="Only show zones aligned with H1 trend")
+adxPeriod = input.int(14, "ADX Period", minval=7, maxval=28, group=g3)
+adxThreshold = input.float(25.0, "ADX Threshold", minval=15.0, maxval=40.0, step=1.0, group=g3, tooltip="ADX > 25 = trending (validated)")
+trendTF = input.timeframe("60", "Trend Timeframe", group=g3, tooltip="Timeframe for trend detection (recommend H1)")
+
+// Visual Settings
+var g4 = "═══════════ VISUAL SETTINGS ═══════════"
+demandColor = input.color(color.new(color.green, 85), "Demand Zone Color", group=g4)
+supplyColor = input.color(color.new(color.red, 85), "Supply Zone Color", group=g4)
+demandBorder = input.color(color.new(color.green, 0), "Demand Border", group=g4)
+supplyBorder = input.color(color.new(color.red, 0), "Supply Border", group=g4)
+obWindowColor = input.color(color.new(color.orange, 95), "OB Window Background", group=g4)
+showLabels = input.bool(true, "Show Zone Labels", group=g4)
+showOBLabels = input.bool(true, "Show OB Window Labels", group=g4)
+
+// Alerts
+var g5 = "═══════════ ALERTS ═══════════"
+enableAlerts = input.bool(false, "Enable Zone Alerts", group=g5, tooltip="Alert when new zone forms during OB window")
+
+// ============================================================================
+// HELPER FUNCTIONS
+// ============================================================================
+
+// Calculate ATR
+calcATR(period) =>
+    tr = ta.tr(true)
+    ta.sma(tr, period)
+
+// Check if current time is in OB window
+isOBTime() =>
+    minute = minute(time)
+
+    // Hourly turn: xx:55-59 and xx:00-05
+    isHourlyTurn = (minute >= (60 - hourlyWindowMins) and minute <= 59) or (minute >= 0 and minute <= hourlyWindowMins)
+
+    // Half-hour: xx:27-33 (30 ± 3)
+    isHalfHour = (minute >= (30 - halfHourWindowMins) and minute <= (30 + halfHourWindowMins))
+
+    isHourlyTurn or isHalfHour
+
+// Get OB window type
+getOBWindowType() =>
+    minute = minute(time)
+    isHourlyTurn = (minute >= (60 - hourlyWindowMins) and minute <= 59) or (minute >= 0 and minute <= hourlyWindowMins)
+    isHalfHour = (minute >= (30 - halfHourWindowMins) and minute <= (30 + halfHourWindowMins))
+
+    if isHourlyTurn
+        "HOURLY"
+    else if isHalfHour
+        "HALF-HR"
+    else
+        "OTHER"
+
+// ============================================================================
+// TREND ANALYSIS (Higher Timeframe)
+// ============================================================================
+
+// ADX Calculation
+[plusDI, minusDI, adxValue] = ta.dmi(adxPeriod, adxPeriod)
+
+// Get higher timeframe trend
+[htfPlusDI, htfMinusDI, htfADX] = request.security(syminfo.tickerid, trendTF, [plusDI, minusDI, adxValue], lookahead=barmerge.lookahead_off)
+
+// Trend direction
+isBullishTrend = htfPlusDI > htfMinusDI and htfADX > adxThreshold
+isBearishTrend = htfMinusDI > htfPlusDI and htfADX > adxThreshold
+isTrending = htfADX > adxThreshold
+
+// ============================================================================
+// ZONE DETECTION (Current Timeframe - M5)
+// ============================================================================
+
+// Calculate ATR for zone sizing
+atr = calcATR(14)
+
+// Detect consolidation areas
+var float consol_high = na
+var float consol_low = na
+var int consol_bars = 0
+var bool in_consolidation = false
+
+// Simple consolidation detection
+range_size = high - low
+avg_range = ta.sma(range_size, 10)
+
+// Check if current bar is consolidating
+is_consolidating = range_size < (atr * 1.5)
+
+// Track consolidation
+if is_consolidating
+    if not in_consolidation
+        consol_high := high
+        consol_low := low
+        consol_bars := 1
+        in_consolidation := true
+    else
+        consol_high := math.max(consol_high, high)
+        consol_low := math.min(consol_low, low)
+        consol_bars += 1
+else
+    in_consolidation := false
+
+// Detect breakouts from consolidation
+var bool new_demand_zone = false
+var bool new_supply_zone = false
+var float zone_top = na
+var float zone_bottom = na
+var int zone_birth_bar = na
+var bool zone_formed_in_ob = false
+
+// Check for bullish breakout (Demand Zone)
+if not is_consolidating and consol_bars >= minConsolidation
+    breakout_size = close - consol_high
+    velocity = breakout_size / atr
+
+    if velocity > minVelocityATR and close > consol_high
+        // Check if formed during OB window
+        formed_in_ob = isOBTime()
+
+        // Apply OB filter if enabled
+        pass_ob_filter = not enableOBFilter or formed_in_ob
+
+        // Apply trend filter if enabled
+        pass_trend_filter = not enableTrendFilter or isBullishTrend
+
+        if pass_ob_filter and pass_trend_filter
+            new_demand_zone := true
+            zone_bottom := consol_low
+            zone_top := zone_bottom + (atr * zoneWidthATR)
+            zone_birth_bar := bar_index
+            zone_formed_in_ob := formed_in_ob
+
+            // Reset consolidation
+            consol_bars := 0
+
+// Check for bearish breakout (Supply Zone)
+if not is_consolidating and consol_bars >= minConsolidation
+    breakout_size = consol_low - close
+    velocity = breakout_size / atr
+
+    if velocity > minVelocityATR and close < consol_low
+        // Check if formed during OB window
+        formed_in_ob = isOBTime()
+
+        // Apply OB filter if enabled
+        pass_ob_filter = not enableOBFilter or formed_in_ob
+
+        // Apply trend filter if enabled
+        pass_trend_filter = not enableTrendFilter or isBearishTrend
+
+        if pass_ob_filter and pass_trend_filter
+            new_supply_zone := true
+            zone_top := consol_high
+            zone_bottom := zone_top - (atr * zoneWidthATR)
+            zone_birth_bar := bar_index
+            zone_formed_in_ob := formed_in_ob
+
+            // Reset consolidation
+            consol_bars := 0
+
+// ============================================================================
+// ZONE STORAGE & MANAGEMENT
+// ============================================================================
+
+// Store zones in arrays
+var array<box> demandZones = array.new<box>()
+var array<box> supplyZones = array.new<box>()
+var array<label> zoneLabels = array.new<label>()
+var array<int> zoneBirthBars = array.new<int>()
+
+// Create demand zone
+if new_demand_zone
+    // Remove old zones if max reached
+    if array.size(demandZones) >= 25
+        oldBox = array.shift(demandZones)
+        box.delete(oldBox)
+        oldLabel = array.shift(zoneLabels)
+        label.delete(oldLabel)
+        array.shift(zoneBirthBars)
+
+    // Create new zone box
+    zoneBox = box.new(
+        left=bar_index,
+        top=zone_top,
+        right=bar_index + 1,
+        bottom=zone_bottom,
+        bgcolor=demandColor,
+        border_color=demandBorder,
+        border_width=2,
+        extend=extend.right
+    )
+    array.push(demandZones, zoneBox)
+    array.push(zoneBirthBars, zone_birth_bar)
+
+    // Create label
+    if showLabels
+        labelText = zone_formed_in_ob ? "BUY ZONE\n[OB]" : "BUY ZONE"
+        zoneLabel = label.new(
+            x=bar_index,
+            y=zone_bottom,
+            text=labelText,
+            style=label.style_label_up,
+            color=color.new(color.green, 20),
+            textcolor=color.white,
+            size=size.small
+        )
+        array.push(zoneLabels, zoneLabel)
+
+    // Alert
+    if enableAlerts and zone_formed_in_ob
+        alert("Demand Zone formed during OB window at " + str.tostring(zone_bottom), alert.freq_once_per_bar)
+
+// Create supply zone
+if new_supply_zone
+    // Remove old zones if max reached
+    if array.size(supplyZones) >= 25
+        oldBox = array.shift(supplyZones)
+        box.delete(oldBox)
+        oldLabel = array.shift(zoneLabels)
+        label.delete(oldLabel)
+        array.shift(zoneBirthBars)
+
+    // Create new zone box
+    zoneBox = box.new(
+        left=bar_index,
+        top=zone_top,
+        right=bar_index + 1,
+        bottom=zone_bottom,
+        bgcolor=supplyColor,
+        border_color=supplyBorder,
+        border_width=2,
+        extend=extend.right
+    )
+    array.push(supplyZones, zoneBox)
+    array.push(zoneBirthBars, zone_birth_bar)
+
+    // Create label
+    if showLabels
+        labelText = zone_formed_in_ob ? "SELL ZONE\n[OB]" : "SELL ZONE"
+        zoneLabel = label.new(
+            x=bar_index,
+            y=zone_top,
+            text=labelText,
+            style=label.style_label_down,
+            color=color.new(color.red, 20),
+            textcolor=color.white,
+            size=size.small
+        )
+        array.push(zoneLabels, zoneLabel)
+
+    // Alert
+    if enableAlerts and zone_formed_in_ob
+        alert("Supply Zone formed during OB window at " + str.tostring(zone_top), alert.freq_once_per_bar)
+
+// Clean up old zones (beyond maxZoneAge)
+if array.size(zoneBirthBars) > 0
+    for i = array.size(zoneBirthBars) - 1 to 0
+        birth = array.get(zoneBirthBars, i)
+        age = bar_index - birth
+
+        if age > maxZoneAge
+            // Remove from demand zones
+            if i < array.size(demandZones)
+                oldBox = array.get(demandZones, i)
+                box.delete(oldBox)
+                array.remove(demandZones, i)
+
+            // Remove from supply zones
+            if i < array.size(supplyZones)
+                oldBox = array.get(supplyZones, i)
+                box.delete(oldBox)
+                array.remove(supplyZones, i)
+
+            // Remove label
+            if i < array.size(zoneLabels)
+                oldLabel = array.get(zoneLabels, i)
+                label.delete(oldLabel)
+                array.remove(zoneLabels, i)
+
+            array.remove(zoneBirthBars, i)
+
+// ============================================================================
+// OB WINDOW HIGHLIGHTING
+// ============================================================================
+
+// Highlight OB time windows
+inOBWindow = isOBTime()
+bgcolor(showOBBackground and inOBWindow ? obWindowColor : na, title="OB Window")
+
+// OB Window label at start of window
+var label obLabel = na
+if inOBWindow and not inOBWindow[1] and showOBLabels
+    if not na(obLabel)
+        label.delete(obLabel)
+
+    windowType = getOBWindowType()
+    obLabel := label.new(
+        x=bar_index,
+        y=high,
+        text=windowType + "\nOB WINDOW",
+        style=label.style_label_down,
+        color=color.new(color.orange, 30),
+        textcolor=color.white,
+        size=size.tiny
+    )
+
+// ============================================================================
+// TREND INDICATOR (Dashboard)
+// ============================================================================
+
+// Create dashboard
+var table dashboard = table.new(position.top_right, 2, 5, border_width=2, border_color=color.gray, bgcolor=color.new(color.black, 85))
+
+if barstate.islast
+    // Header
+    table.cell(dashboard, 0, 0, "MOMENTUM FX", text_color=color.white, text_size=size.small, bgcolor=color.new(color.blue, 70))
+    table.cell(dashboard, 1, 0, "6Y VALIDATED", text_color=color.white, text_size=size.tiny, bgcolor=color.new(color.blue, 70))
+
+    // Trend
+    trendText = isBullishTrend ? "BULLISH" : isBearishTrend ? "BEARISH" : "NEUTRAL"
+    trendColor = isBullishTrend ? color.green : isBearishTrend ? color.red : color.gray
+    table.cell(dashboard, 0, 1, "H1 Trend:", text_color=color.white, text_size=size.small)
+    table.cell(dashboard, 1, 1, trendText, text_color=color.white, text_size=size.small, bgcolor=color.new(trendColor, 70))
+
+    // ADX
+    table.cell(dashboard, 0, 2, "ADX:", text_color=color.white, text_size=size.small)
+    table.cell(dashboard, 1, 2, str.tostring(htfADX, "#.0"), text_color=color.white, text_size=size.small)
+
+    // OB Window
+    obStatus = inOBWindow ? "ACTIVE ✓" : "INACTIVE"
+    obColor = inOBWindow ? color.green : color.gray
+    table.cell(dashboard, 0, 3, "OB Window:", text_color=color.white, text_size=size.small)
+    table.cell(dashboard, 1, 3, obStatus, text_color=color.white, text_size=size.small, bgcolor=color.new(obColor, 70))
+
+    // Zone count
+    totalZones = array.size(demandZones) + array.size(supplyZones)
+    table.cell(dashboard, 0, 4, "Active Zones:", text_color=color.white, text_size=size.small)
+    table.cell(dashboard, 1, 4, str.tostring(totalZones), text_color=color.white, text_size=size.small)
+
+// ============================================================================
+// PLOTS FOR BACKTESTING
+// ============================================================================
+
+// Plot zone signals (for backtesting/strategy integration)
+plotshape(new_demand_zone, style=shape.triangleup, location=location.belowbar, color=color.new(color.green, 0), size=size.small, title="Demand Zone Signal")
+plotshape(new_supply_zone, style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small, title="Supply Zone Signal")
+
+// Plot ATR for reference
+plot(enableTrendFilter ? htfADX : na, title="H1 ADX", color=color.new(color.purple, 0), linewidth=2, display=display.none)
