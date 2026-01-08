@@ -146,6 +146,61 @@ python code/notebooks/06_six_year_validation_2020_2025.py
 
 ---
 
+## 📊 TradingView Indicator
+
+### Professional Pine Script Indicator (Based on 6-Year Validation)
+
+We've created a **free, open-source TradingView indicator** that implements this research:
+
+**Location**: `tradingview/MomentumFX_OrderBlock_Zones.pine`
+
+#### Features
+
+✅ **Zone Detection** (M5/M15)
+- Supply zones (resistance/selling areas)
+- Demand zones (support/buying areas)
+- Consolidation → breakout detection
+- ATR-normalized sizing (validated parameters)
+
+✅ **Order Block Time Windows** (2.56x concentration)
+- Highlights xx:55-05 UTC (hourly turns)
+- Highlights xx:30±3 UTC (half-hourly)
+- [OB] tags on zones formed during OB windows
+- Orange background during OB periods
+
+✅ **Trend Filter** (H1 timeframe)
+- ADX-based trend detection
+- Shows BULLISH/BEARISH/NEUTRAL
+- Filters zones to align with trend
+
+✅ **Real-Time Dashboard**
+- H1 trend direction
+- ADX value
+- OB window status
+- Active zone count
+
+#### Quick Install
+
+1. Copy `tradingview/MomentumFX_OrderBlock_Zones.pine`
+2. Open TradingView → Pine Editor
+3. Paste code → Save → Add to Chart
+
+#### Recommended Setup
+
+**Chart**: M15 (15-minute)
+**Instrument**: XAUUSD (Gold) - 95.3% validated
+**Settings**: Keep defaults (validated parameters)
+
+**Complete Guide**: See `tradingview/INDICATOR_GUIDE.md` (700+ lines)
+- Installation instructions
+- Settings explanation
+- Trading strategy
+- Regime-based usage
+- Instrument recommendations
+- Troubleshooting
+
+---
+
 ## 🎓 Methodology Overview
 
 ### Zone Detection Algorithm
