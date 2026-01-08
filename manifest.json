@@ -1,0 +1,22 @@
+{
+  "package": "SD_Trend_Universal_Research",
+  "version": "1.0.0",
+  "created": "2026-01-08T12:30:12.357883",
+  "description": "6-year validation study (2020-2025) including COVID-19 period",
+  "statistics": {
+    "total_bars": "2.5M+",
+    "total_zones": "838",
+    "instruments": 5,
+    "period_years": 6,
+    "concentration_factor": 1.76,
+    "p_value": "< 0.001"
+  },
+  "contents": {
+    "research_docs": 9,
+    "code_modules": 6,
+    "notebooks": 6,
+    "scripts": 2
+  },
+  "license": "MIT",
+  "data_source": "Dukascopy Bank SA"
+}

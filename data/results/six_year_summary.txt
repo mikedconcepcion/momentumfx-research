@@ -1,0 +1,43 @@
+SIX-YEAR VALIDATION SUMMARY (2020-2025)
+================================================================================
+
+COVID (2020, 2021):
+  Bars analyzed: 1,049,765
+  Zones detected: 88
+  Supply zones: 24
+  Demand zones: 64
+  OB zones: 82 (93.18%)
+  Concentration factor: 2.8x
+  Chi-square: X^2 = 142.07 (SIGNIFICANT p<0.001)
+
+POST_COVID (2022, 2023):
+  Bars analyzed: 703,504
+  Zones detected: 30
+  Supply zones: 16
+  Demand zones: 14
+  OB zones: 19 (63.33%)
+  Concentration factor: 1.9x
+  Chi-square: X^2 = 12.18 (SIGNIFICANT p<0.001)
+
+RECENT (2024, 2025):
+  Bars analyzed: 664,129
+  Zones detected: 12
+  Supply zones: 6
+  Demand zones: 6
+  OB zones: 10 (83.33%)
+  Concentration factor: 2.5x
+  Chi-square: X^2 = 13.52 (SIGNIFICANT p<0.001)
+
+FULL_6YR (2020, 2021, 2022, 2023, 2024, 2025):
+  Bars analyzed: 2,417,398
+  Zones detected: 130
+  Supply zones: 46
+  Demand zones: 84
+  OB zones: 111 (85.38%)
+  Concentration factor: 2.56x
+  Chi-square: X^2 = 158.78 (SIGNIFICANT p<0.001)
+
+
+Generated: 2026-01-08 13:34:05
+Data source: Dukascopy Bank SA
+Instruments: EURUSD, GBPUSD, USDJPY, XAUUSD, BTCUSD

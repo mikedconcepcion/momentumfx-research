@@ -1,0 +1,25 @@
+title: SD Trend Universal Research
+description: Periodic Institutional Order Flow and Supply-Demand Zone Formation - 6-Year Validation Study
+theme: jekyll-theme-cayman
+baseurl: /SD_Trend_Universal_Research
+url: https://YOUR_USERNAME.github.io
+
+# GitHub metadata
+github:
+  repository_url: https://github.com/YOUR_USERNAME/SD_Trend_Universal_Research
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Collections
+collections:
+  research:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

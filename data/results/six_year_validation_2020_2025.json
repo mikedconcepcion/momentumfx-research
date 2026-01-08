@@ -1,0 +1,346 @@
+{
+  "yearly": {
+    "2020": [
+      {
+        "instrument": "EURUSD",
+        "year": "2020",
+        "bars": 105121,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2020",
+        "bars": 105121,
+        "zones": 2,
+        "supply_zones": 0,
+        "demand_zones": 2,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2020",
+        "bars": 105121,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "XAUUSD",
+        "year": "2020",
+        "bars": 105121,
+        "zones": 39,
+        "supply_zones": 13,
+        "demand_zones": 26,
+        "ob_zones": 39
+      },
+      {
+        "instrument": "BTCUSD",
+        "year": "2020",
+        "bars": 105121,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 1
+      }
+    ],
+    "2021": [
+      {
+        "instrument": "EURUSD",
+        "year": "2021",
+        "bars": 104832,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2021",
+        "bars": 104832,
+        "zones": 2,
+        "supply_zones": 1,
+        "demand_zones": 1,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2021",
+        "bars": 104832,
+        "zones": 1,
+        "supply_zones": 1,
+        "demand_zones": 0,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "XAUUSD",
+        "year": "2021",
+        "bars": 104832,
+        "zones": 41,
+        "supply_zones": 9,
+        "demand_zones": 32,
+        "ob_zones": 41
+      },
+      {
+        "instrument": "BTCUSD",
+        "year": "2021",
+        "bars": 104832,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      }
+    ],
+    "2022": [
+      {
+        "instrument": "EURUSD",
+        "year": "2022",
+        "bars": 65609,
+        "zones": 1,
+        "supply_zones": 1,
+        "demand_zones": 0,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2022",
+        "bars": 65250,
+        "zones": 2,
+        "supply_zones": 1,
+        "demand_zones": 1,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2022",
+        "bars": 63295,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "XAUUSD",
+        "year": "2022",
+        "bars": 68456,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "BTCUSD",
+        "year": "2022",
+        "bars": 94309,
+        "zones": 3,
+        "supply_zones": 1,
+        "demand_zones": 2,
+        "ob_zones": 3
+      }
+    ],
+    "2023": [
+      {
+        "instrument": "EURUSD",
+        "year": "2023",
+        "bars": 66606,
+        "zones": 3,
+        "supply_zones": 3,
+        "demand_zones": 0,
+        "ob_zones": 3
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2023",
+        "bars": 60937,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2023",
+        "bars": 58922,
+        "zones": 3,
+        "supply_zones": 2,
+        "demand_zones": 1,
+        "ob_zones": 3
+      },
+      {
+        "instrument": "XAUUSD",
+        "year": "2023",
+        "bars": 61974,
+        "zones": 1,
+        "supply_zones": 0,
+        "demand_zones": 1,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "BTCUSD",
+        "year": "2023",
+        "bars": 98146,
+        "zones": 15,
+        "supply_zones": 8,
+        "demand_zones": 7,
+        "ob_zones": 7
+      }
+    ],
+    "2024": [
+      {
+        "instrument": "EURUSD",
+        "year": "2024",
+        "bars": 63686,
+        "zones": 4,
+        "supply_zones": 0,
+        "demand_zones": 4,
+        "ob_zones": 4
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2024",
+        "bars": 63062,
+        "zones": 2,
+        "supply_zones": 2,
+        "demand_zones": 0,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2024",
+        "bars": 63295,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "XAUUSD",
+        "year": "2024",
+        "bars": 61597,
+        "zones": 4,
+        "supply_zones": 2,
+        "demand_zones": 2,
+        "ob_zones": 3
+      },
+      {
+        "instrument": "BTCUSD",
+        "year": "2024",
+        "bars": 101449,
+        "zones": 1,
+        "supply_zones": 1,
+        "demand_zones": 0,
+        "ob_zones": 1
+      }
+    ],
+    "2025": [
+      {
+        "instrument": "EURUSD",
+        "year": "2025",
+        "bars": 103680,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      },
+      {
+        "instrument": "GBPUSD",
+        "year": "2025",
+        "bars": 103680,
+        "zones": 1,
+        "supply_zones": 1,
+        "demand_zones": 0,
+        "ob_zones": 1
+      },
+      {
+        "instrument": "USDJPY",
+        "year": "2025",
+        "bars": 103680,
+        "zones": 0,
+        "supply_zones": 0,
+        "demand_zones": 0,
+        "ob_zones": 0
+      }
+    ]
+  },
+  "periods": {
+    "covid": {
+      "years": [
+        "2020",
+        "2021"
+      ],
+      "bars": 1049765,
+      "zones": 88,
+      "supply_zones": 24,
+      "demand_zones": 64,
+      "ob_zones": 82,
+      "ob_pct": 93.18,
+      "concentration": 2.8,
+      "chi_square": 142.07,
+      "significant": true
+    },
+    "post_covid": {
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "bars": 703504,
+      "zones": 30,
+      "supply_zones": 16,
+      "demand_zones": 14,
+      "ob_zones": 19,
+      "ob_pct": 63.33,
+      "concentration": 1.9,
+      "chi_square": 12.18,
+      "significant": true
+    },
+    "recent": {
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "bars": 664129,
+      "zones": 12,
+      "supply_zones": 6,
+      "demand_zones": 6,
+      "ob_zones": 10,
+      "ob_pct": 83.33,
+      "concentration": 2.5,
+      "chi_square": 13.52,
+      "significant": true
+    },
+    "full_6yr": {
+      "years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "bars": 2417398,
+      "zones": 130,
+      "supply_zones": 46,
+      "demand_zones": 84,
+      "ob_zones": 111,
+      "ob_pct": 85.38,
+      "concentration": 2.56,
+      "chi_square": 158.78,
+      "significant": true
+    }
+  },
+  "metadata": {
+    "generated": "2026-01-08 13:34:05",
+    "data_source": "Dukascopy Bank SA",
+    "instruments": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD",
+      "BTCUSD"
+    ],
+    "total_analyses": 30
+  }
+}
