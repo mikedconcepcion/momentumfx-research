@@ -121,25 +121,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const statValues = document.querySelectorAll('.stat-value');
 
     statValues.forEach(stat => {
-        const text = stat.textContent;
-        const hasNumber = /\d/.test(text);
+        const text = stat.textContent.trim();
 
-        if (hasNumber) {
-            const match = text.match(/([\d.]+)(.*)/);
-            if (match) {
-                const number = parseFloat(match[1]);
-                const suffix = match[2];
-                let current = 0;
-                const increment = number / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= number) {
-                        current = number;
-                        clearInterval(timer);
-                    }
-                    stat.textContent = current.toFixed(number % 1 === 0 ? 0 : 1) + suffix;
-                }, 20);
-            }
+        // Skip stats that are not pure numbers (like "p<0.001", "6 Years", etc.)
+        // Only animate stats that start with a digit and are simple numbers
+        const simpleNumberPattern = /^([\d.]+)(M|x|k|%)?$/;
+        const match = text.match(simpleNumberPattern);
+
+        if (match) {
+            const number = parseFloat(match[1]);
+            const suffix = match[2] || '';
+            let current = 0;
+            const increment = number / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= number) {
+                    current = number;
+                    clearInterval(timer);
+                }
+                stat.textContent = current.toFixed(number % 1 === 0 ? 0 : 1) + suffix;
+            }, 20);
         }
+        // Otherwise, keep the original text as-is (handles "p<0.001", "6 Years", etc.)
     });
 });
