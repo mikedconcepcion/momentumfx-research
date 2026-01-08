@@ -102,20 +102,33 @@ body {
 
 .nav-brand {
     display: flex;
-    align-items: baseline;
-    gap: var(--spacing-xs);
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.brand-logo {
+    height: 40px;
+    width: auto;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary);
+    line-height: 1;
 }
 
 .tagline {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--gray-500);
     font-weight: 500;
+    line-height: 1;
 }
 
 .nav-menu {
@@ -852,5 +865,416 @@ section {
 
     .hero-stats {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================
+   FOR TRADERS SECTION
+   =================================== */
+
+.for-traders {
+    background: white;
+    padding: var(--spacing-2xl) 0;
+}
+
+.trader-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.trader-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.trader-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.trader-card h3 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.trader-card h3::before {
+    content: "▸";
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.trader-card p {
+    color: var(--gray-700);
+    line-height: 1.7;
+}
+
+.trader-card strong {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.trader-card code {
+    background: var(--gray-200);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--primary);
+}
+
+/* Trader Card Variants */
+.trader-card.highlight-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 2px solid var(--primary);
+}
+
+.trader-card.gold-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid var(--gold);
+}
+
+.trader-card.gold-card h3 {
+    color: #92400e;
+}
+
+.trader-card.gold-card h3::before {
+    content: "★";
+    color: var(--gold);
+}
+
+.trader-card.action-card {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 2px solid var(--secondary);
+}
+
+.trader-card.action-card h3 {
+    color: #065f46;
+}
+
+.trader-card.warning-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid var(--warning);
+}
+
+.trader-card.warning-card h3 {
+    color: #92400e;
+}
+
+.trader-card.warning-card h3::before {
+    content: "⚠";
+}
+
+/* Sizing Table */
+.sizing-table {
+    width: 100%;
+    margin-top: var(--spacing-md);
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.sizing-table th,
+.sizing-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.sizing-table th {
+    background: var(--gray-200);
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.sizing-table tr:last-child td {
+    border-bottom: none;
+}
+
+.sizing-table code {
+    background: var(--gray-200);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+}
+
+/* Checklist */
+.checklist {
+    list-style: none;
+    margin-top: var(--spacing-md);
+}
+
+.checklist li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+}
+
+.checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.trader-summary {
+    background: var(--gray-100);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+    border-left: 4px solid var(--warning);
+}
+
+.trader-summary strong {
+    color: var(--danger);
+}
+
+/* ===================================
+   ACADEMIC PAPER SECTION
+   =================================== */
+
+.paper-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    padding: var(--spacing-2xl) 0;
+}
+
+.paper-hero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.paper-info h2 {
+    color: var(--gray-900);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.paper-meta {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.paper-meta p {
+    margin: 4px 0;
+}
+
+.paper-badges {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge.badge-validated {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge.badge-covid {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge.badge-open-source {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.paper-abstract {
+    background: var(--gray-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+    line-height: 1.8;
+    color: var(--gray-700);
+}
+
+.paper-abstract strong {
+    color: var(--gray-900);
+}
+
+.paper-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+}
+
+.paper-cta .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.paper-highlights {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.paper-highlights h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.paper-highlights ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.paper-highlights li {
+    padding: var(--spacing-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--primary);
+}
+
+.paper-highlights strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.paper-downloads {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.paper-downloads h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.download-item {
+    padding: var(--spacing-md);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.download-item:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.download-item:hover h4,
+.download-item:hover p {
+    color: white;
+}
+
+.download-item h4 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.download-item p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+
+.citation-section {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.citation-section h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.citation-box {
+    background: var(--gray-900);
+    color: var(--gray-100);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+.citation-box:last-child {
+    margin-bottom: 0;
+}
+
+/* ===================================
+   RESPONSIVE - NEW SECTIONS
+   =================================== */
+
+@media (max-width: 768px) {
+    .trader-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .paper-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .paper-cta {
+        margin-top: var(--spacing-lg);
+    }
+
+    .paper-highlights ul {
+        grid-template-columns: 1fr;
+    }
+
+    .downloads-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sizing-table {
+        font-size: 0.8em;
+    }
+
+    .sizing-table th,
+    .sizing-table td {
+        padding: var(--spacing-xs);
     }
 }

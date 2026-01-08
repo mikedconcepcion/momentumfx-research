@@ -15,14 +15,17 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <span class="logo">Momentum FX</span>
-                <span class="tagline">Research</span>
+                <img src="MFX_Logo.png" alt="Momentum FX" class="brand-logo">
+                <div class="brand-text">
+                    <span class="logo">Momentum FX</span>
+                    <span class="tagline">Research</span>
+                </div>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#for-traders" class="nav-link">For Traders</a></li>
                 <li><a href="#results" class="nav-link">Results</a></li>
-                <li><a href="#methodology" class="nav-link">Methodology</a></li>
-                <li><a href="#data" class="nav-link">Data</a></li>
+                <li><a href="#paper" class="nav-link">Academic Paper</a></li>
                 <li><a href="https://github.com/mikedconcepcion/momentumfx-research" class="nav-link" target="_blank">GitHub</a></li>
             </ul>
             <button class="mobile-toggle" aria-label="Toggle menu">
@@ -74,10 +77,150 @@
         <div class="hero-bg"></div>
     </section>
 
+    <!-- For Traders Section -->
+    <section id="for-traders" class="for-traders">
+        <div class="container">
+            <h2 class="section-title">What This Means for Traders</h2>
+            <p class="section-subtitle">Practical trading guidance based on 6-year validation</p>
+
+            <div class="trader-grid">
+                <div class="trader-card highlight-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Core Finding</h3>
+                    <p class="finding-text">Supply-demand zones form <strong>2.56x more frequently</strong> during specific Order Block (OB) time windows. This pattern remained statistically significant through COVID-19 crash and 6 years of market conditions.</p>
+                </div>
+
+                <div class="trader-card">
+                    <div class="card-icon">⏰</div>
+                    <h3>When to Trade</h3>
+                    <p><strong>Focus on OB Time Windows:</strong></p>
+                    <ul class="time-list">
+                        <li><strong>Hourly Turns:</strong> xx:55-xx:05 UTC (10 minutes every hour)</li>
+                        <li><strong>Half-Hourly:</strong> xx:30±3 UTC (6 minutes every hour)</li>
+                    </ul>
+                    <p class="emphasis">These windows cover only 33% of time but capture 85% of quality zones</p>
+                </div>
+
+                <div class="trader-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Recommended Timeframes</h3>
+                    <ul class="timeframe-list">
+                        <li><strong>Primary Analysis:</strong> M15 (15-minute charts)</li>
+                        <li><strong>Zone Detection:</strong> M5 (5-minute for precision)</li>
+                        <li><strong>Trend Confirmation:</strong> H1 (1-hour for direction)</li>
+                    </ul>
+                    <p class="note">Use multi-timeframe analysis for best results</p>
+                </div>
+
+                <div class="trader-card gold-card">
+                    <div class="card-icon">🥇</div>
+                    <h3>Best Instrument: XAUUSD (Gold)</h3>
+                    <p><strong>Why Gold Dominates:</strong></p>
+                    <ul>
+                        <li>95.3% OB concentration (highest of all instruments)</li>
+                        <li>65% of all quality zones detected</li>
+                        <li>Most consistent across all market regimes</li>
+                        <li>Pattern held strong through COVID crash</li>
+                    </ul>
+                    <p class="recommendation"><strong>→ Use XAUUSD as primary trading instrument</strong></p>
+                </div>
+
+                <div class="trader-card">
+                    <div class="card-icon">💼</div>
+                    <h3>Position Sizing Recommendations</h3>
+                    <table class="sizing-table">
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Risk %</th>
+                            <th>Priority</th>
+                        </tr>
+                        <tr class="primary-row">
+                            <td><strong>XAUUSD (Gold)</strong></td>
+                            <td>1.5-2.0%</td>
+                            <td>PRIMARY</td>
+                        </tr>
+                        <tr>
+                            <td>EURUSD</td>
+                            <td>1.0-1.5%</td>
+                            <td>Secondary</td>
+                        </tr>
+                        <tr>
+                            <td>USDJPY</td>
+                            <td>1.0-1.5%</td>
+                            <td>Secondary</td>
+                        </tr>
+                        <tr>
+                            <td>BTCUSD</td>
+                            <td>0.5% max</td>
+                            <td>Caution</td>
+                        </tr>
+                        <tr class="avoid-row">
+                            <td>GBPUSD</td>
+                            <td>Avoid</td>
+                            <td>16.7% OB only</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="trader-card">
+                    <div class="card-icon">🎲</div>
+                    <h3>Regime Filters (Critical)</h3>
+                    <p><strong>Best Performance:</strong></p>
+                    <ul>
+                        <li><strong>Volatile Markets:</strong> 2.80x concentration (like COVID period)</li>
+                        <li><strong>Trending Markets:</strong> Use with confidence</li>
+                        <li><strong>High ATR Periods:</strong> Pattern strengthens</li>
+                    </ul>
+                    <p><strong>Reduce Exposure:</strong></p>
+                    <ul>
+                        <li>Ranging/consolidating markets (1.90x concentration)</li>
+                        <li>Low volatility periods</li>
+                        <li>Post major news events (wait for settlement)</li>
+                    </ul>
+                </div>
+
+                <div class="trader-card action-card">
+                    <div class="card-icon">✅</div>
+                    <h3>Practical Trading Checklist</h3>
+                    <ol class="checklist">
+                        <li><strong>Time Check:</strong> Is it within OB window (xx:55-05 or xx:30±3)?</li>
+                        <li><strong>Instrument:</strong> Preferably XAUUSD, or EURUSD/USDJPY</li>
+                        <li><strong>Zone Quality:</strong> Clear consolidation + sharp breakout</li>
+                        <li><strong>Trend Alignment:</strong> Zone type matches H1 trend direction</li>
+                        <li><strong>Regime:</strong> Volatile/trending market preferred</li>
+                        <li><strong>Risk Management:</strong> 1.5-2% max for gold, less for others</li>
+                    </ol>
+                </div>
+
+                <div class="trader-card warning-card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>Important Limitations</h3>
+                    <ul class="warning-list">
+                        <li><strong>Not a standalone system:</strong> Use OB timing as a FILTER, not sole entry signal</li>
+                        <li><strong>Requires confirmation:</strong> Combine with trend analysis, zone strength, risk management</li>
+                        <li><strong>Regime dependent:</strong> Pattern weaker in ranging markets (but still significant)</li>
+                        <li><strong>GBPUSD avoid:</strong> Only 16.7% OB concentration in our data</li>
+                        <li><strong>Past performance:</strong> 6-year validation does not guarantee future results</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="trader-summary">
+                <h3>Bottom Line for Traders</h3>
+                <p class="summary-text">
+                    This research provides <strong>statistical evidence</strong> that institutional order flow concentrates during specific periodic time windows.
+                    By focusing your trading activity on these OB windows (33% of time), you can access zones that have shown <strong>2.56x higher quality</strong>
+                    over 6 years of data. <strong>Gold (XAUUSD)</strong> is the standout instrument with 95.3% OB concentration.
+                    Use this as a <strong>timing filter</strong> within a complete trading system that includes trend analysis, proper risk management, and regime awareness.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Key Findings -->
     <section class="findings">
         <div class="container">
-            <h2 class="section-title">Key Findings</h2>
+            <h2 class="section-title">Key Research Findings</h2>
             <div class="findings-grid">
                 <div class="finding-card">
                     <div class="finding-icon">📊</div>
@@ -328,6 +471,173 @@ ZONE_PARAMS = {
                         <li><strong>Timeframe:</strong> M5 (5-minute bars)</li>
                         <li><strong>Coverage:</strong> Complete, no gaps</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Paper Section -->
+    <section id="paper" class="paper-section">
+        <div class="container">
+            <h2 class="section-title">Academic Research Paper</h2>
+            <p class="section-subtitle">Peer-review ready research with complete methodology and statistical validation</p>
+
+            <div class="paper-hero">
+                <div class="paper-info">
+                    <h3>Periodic Institutional Order Flow and Supply-Demand Zone Formation</h3>
+                    <p class="paper-authors">Momentum FX Research Team</p>
+                    <p class="paper-meta">Published: January 2026 | Pages: 55KB | Format: Markdown</p>
+
+                    <div class="paper-badges">
+                        <span class="paper-badge">6-Year Validation</span>
+                        <span class="paper-badge">2.4M Observations</span>
+                        <span class="paper-badge">p < 0.001</span>
+                        <span class="paper-badge">Peer-Review Ready</span>
+                    </div>
+
+                    <div class="paper-abstract">
+                        <h4>Abstract</h4>
+                        <p>
+                            We investigate whether supply-demand zones form preferentially during periodic "Order Block" (OB) time windows
+                            and whether this pattern persists across multiple asset classes and extreme market regimes including the COVID-19 crash.
+                            Analyzing 2,417,398 five-minute bars across five instruments (EURUSD, GBPUSD, USDJPY, XAUUSD, BTCUSD) spanning
+                            January 2020 to December 2025 (6 years), we find statistically significant concentration of zone formation during
+                            OB windows (χ² = 158.78, p < 0.001). Pattern persisted through COVID-19 crash with concentration factor of 2.80x.
+                            Gold (XAUUSD) demonstrated highest consistency with 95.3% OB concentration. Results suggest genuine institutional
+                            order flow timing patterns that traders can incorporate as a filter within complete trading systems.
+                        </p>
+                    </div>
+
+                    <div class="paper-cta">
+                        <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/ACADEMIC_RESEARCH_PAPER.md" class="btn btn-primary" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            Read Full Paper (55KB)
+                        </a>
+                        <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/SIX_YEAR_VALIDATION_2020_2025.md" class="btn btn-secondary" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
+                            </svg>
+                            6-Year Validation Report
+                        </a>
+                    </div>
+                </div>
+
+                <div class="paper-highlights">
+                    <h4>Paper Highlights</h4>
+                    <ul class="highlights-list">
+                        <li>
+                            <strong>Introduction & Literature Review</strong>
+                            <p>Market microstructure theory, institutional order flow, supply-demand dynamics</p>
+                        </li>
+                        <li>
+                            <strong>Methodology</strong>
+                            <p>Zone detection algorithm, OB window classification, ATR normalization</p>
+                        </li>
+                        <li>
+                            <strong>Statistical Analysis</strong>
+                            <p>Chi-square tests, Bonferroni correction, cross-period validation</p>
+                        </li>
+                        <li>
+                            <strong>6-Year Results</strong>
+                            <p>Full breakdown by period (COVID, post-COVID, recent) and instrument</p>
+                        </li>
+                        <li>
+                            <strong>COVID-19 Analysis</strong>
+                            <p>Pattern behavior during March 2020 crash - strengthened to 2.80x</p>
+                        </li>
+                        <li>
+                            <strong>Regime-Conditional Findings</strong>
+                            <p>How pattern varies with market volatility and trending conditions</p>
+                        </li>
+                        <li>
+                            <strong>Trading Implications</strong>
+                            <p>Practical guidance for implementing findings in live trading</p>
+                        </li>
+                        <li>
+                            <strong>Limitations & Future Research</strong>
+                            <p>Honest assessment of constraints and directions for further study</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="paper-downloads">
+                <h3>Additional Research Documents</h3>
+                <div class="downloads-grid">
+                    <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/VALIDATION_COMPLETE.md" class="download-item" target="_blank">
+                        <div class="download-icon">✓</div>
+                        <div class="download-content">
+                            <h4>Validation Complete</h4>
+                            <p>Quick overview of validation results and key findings</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/RESEARCH_SUMMARY.md" class="download-item" target="_blank">
+                        <div class="download-icon">📝</div>
+                        <div class="download-content">
+                            <h4>Research Summary</h4>
+                            <p>Executive summary - 15 minute read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/EXTENDED_VALIDATION_2023_2025.md" class="download-item" target="_blank">
+                        <div class="download-icon">📊</div>
+                        <div class="download-content">
+                            <h4>2-Year Study (2023-2025)</h4>
+                            <p>318 zones, 699,674 bars, seasonality analysis</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/mikedconcepcion/momentumfx-research/blob/main/research/FINDINGS.md" class="download-item" target="_blank">
+                        <div class="download-icon">🔍</div>
+                        <div class="download-content">
+                            <h4>Technical Findings</h4>
+                            <p>Detailed technical analysis and observations</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/mikedconcepcion/momentumfx-research" class="download-item github-link" target="_blank">
+                        <div class="download-icon">
+                            <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </div>
+                        <div class="download-content">
+                            <h4>Full Repository</h4>
+                            <p>Complete source code, all documentation, and results</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="citation-section">
+                <h3>How to Cite This Research</h3>
+                <div class="citation-box">
+                    <h4>BibTeX</h4>
+                    <pre class="citation-code">@techreport{momentum_fx_2026,
+  title={Periodic Institutional Order Flow and Supply-Demand Zone Formation:
+         A Universal Multi-Asset Empirical Study},
+  author={Momentum FX Research Team},
+  year={2026},
+  institution={Momentum FX Research},
+  note={6-year validation study (2020-2025) including COVID-19 period.
+        Sample: 2.4M+ bars, 130 zones across 5 instruments.},
+  url={https://github.com/mikedconcepcion/momentumfx-research}
+}</pre>
+                </div>
+
+                <div class="citation-box">
+                    <h4>APA Format</h4>
+                    <pre class="citation-code">Momentum FX Research Team. (2026). Periodic institutional order flow and
+supply-demand zone formation: A universal multi-asset empirical study
+(6-year validation including COVID-19).
+https://github.com/mikedconcepcion/momentumfx-research</pre>
                 </div>
             </div>
         </div>
