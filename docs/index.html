@@ -23,7 +23,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#for-traders" class="nav-link">For Traders</a></li>
+                <li><a href="#for-traders" class="nav-link">Trading Guide</a></li>
                 <li><a href="#results" class="nav-link">Results</a></li>
                 <li><a href="#paper" class="nav-link">Academic Paper</a></li>
                 <li><a href="https://github.com/mikedconcepcion/momentumfx-research" class="nav-link" target="_blank">GitHub</a></li>
@@ -75,6 +75,184 @@
             </div>
         </div>
         <div class="hero-bg"></div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer-section">
+        <div class="container">
+            <div class="disclaimer-box">
+                <div class="disclaimer-header">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <h3>Important Disclaimer for Traders</h3>
+                </div>
+                <div class="disclaimer-content">
+                    <p><strong>This research is NOT a complete trading system.</strong> Order Block time windows are an <strong>informational filter</strong>, not a standalone entry signal.</p>
+
+                    <div class="disclaimer-grid">
+                        <div class="disclaimer-item">
+                            <strong>✓ Use as:</strong> Timing filter to focus analysis on high-probability periods
+                        </div>
+                        <div class="disclaimer-item">
+                            <strong>✗ Do NOT use as:</strong> Sole entry/exit signal without confirmation
+                        </div>
+                        <div class="disclaimer-item">
+                            <strong>✓ Combine with:</strong> Trend analysis, zone strength assessment, volume confirmation
+                        </div>
+                        <div class="disclaimer-item">
+                            <strong>✗ Avoid during:</strong> Major news events, low liquidity periods, untested market conditions
+                        </div>
+                    </div>
+
+                    <p class="disclaimer-footer"><strong>Risk Warning:</strong> Trading foreign exchange and commodities carries a high level of risk. Past performance does not guarantee future results. The 6-year validation period does not ensure this pattern will persist. Always use proper risk management and never risk more than you can afford to lose.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Hours by Regime -->
+    <section class="trading-hours-section">
+        <div class="container">
+            <h2 class="section-title">📅 Practical Trading Hours by Market Regime</h2>
+            <p class="section-subtitle">When to focus your analysis based on 6-year validation results</p>
+
+            <div class="regime-grid">
+                <!-- Volatile Markets -->
+                <div class="regime-card volatile-card">
+                    <div class="regime-header">
+                        <h3>🔥 Volatile Markets (COVID-like)</h3>
+                        <div class="regime-concentration">2.80x concentration</div>
+                    </div>
+                    <div class="regime-body">
+                        <p class="regime-desc"><strong>Best Performance Period:</strong> 2020-2021 COVID crash showed <strong>strongest</strong> OB concentration</p>
+
+                        <h4>Priority Trading Windows (UTC):</h4>
+                        <div class="hours-grid">
+                            <div class="hour-block critical">
+                                <strong>CRITICAL</strong>
+                                <div class="hours">08:55-09:05</div>
+                                <div class="session">London Open Turn</div>
+                            </div>
+                            <div class="hour-block critical">
+                                <strong>CRITICAL</strong>
+                                <div class="hours">13:55-14:05</div>
+                                <div class="session">NY Open Turn</div>
+                            </div>
+                            <div class="hour-block high">
+                                <strong>HIGH</strong>
+                                <div class="hours">08:30±3, 09:30±3</div>
+                                <div class="session">London Half-Hours</div>
+                            </div>
+                            <div class="hour-block high">
+                                <strong>HIGH</strong>
+                                <div class="hours">13:30±3, 14:30±3</div>
+                                <div class="session">NY Half-Hours</div>
+                            </div>
+                        </div>
+
+                        <div class="regime-tip">
+                            <strong>💡 Strategy:</strong> Focus <strong>all analysis</strong> on OB windows. Pattern works best during high volatility. Use tighter stops (1.0-1.2 ATR).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Markets -->
+                <div class="regime-card trending-card">
+                    <div class="regime-header">
+                        <h3>📈 Trending Markets (Recent)</h3>
+                        <div class="regime-concentration">2.50x concentration</div>
+                    </div>
+                    <div class="regime-body">
+                        <p class="regime-desc"><strong>Period:</strong> 2024-2025 showed <strong>strong recovery</strong> of pattern effectiveness</p>
+
+                        <h4>Focus Windows (UTC):</h4>
+                        <div class="hours-grid">
+                            <div class="hour-block high">
+                                <strong>HIGH</strong>
+                                <div class="hours">xx:55-xx:05</div>
+                                <div class="session">Every Hourly Turn</div>
+                            </div>
+                            <div class="hour-block medium">
+                                <strong>MEDIUM</strong>
+                                <div class="hours">xx:30±3</div>
+                                <div class="session">Half-Hour Marks</div>
+                            </div>
+                        </div>
+
+                        <p><strong>Key Sessions:</strong> London (08:00-17:00) and NY (13:00-22:00) overlaps most productive</p>
+
+                        <div class="regime-tip">
+                            <strong>💡 Strategy:</strong> Combine OB windows with trend confirmation. Standard stops (1.5 ATR). Can trade outside OB windows with strong trend confirmation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranging Markets -->
+                <div class="regime-card ranging-card">
+                    <div class="regime-header">
+                        <h3>📊 Ranging/Consolidating Markets</h3>
+                        <div class="regime-concentration">1.90x concentration</div>
+                    </div>
+                    <div class="regime-body">
+                        <p class="regime-desc"><strong>Period:</strong> 2022-2023 post-COVID showed <strong>weakest</strong> pattern (still significant p<0.001)</p>
+
+                        <h4>Selective Windows (UTC):</h4>
+                        <div class="hours-grid">
+                            <div class="hour-block medium">
+                                <strong>SELECTIVE</strong>
+                                <div class="hours">08:55-09:05</div>
+                                <div class="session">London Open Only</div>
+                            </div>
+                            <div class="hour-block medium">
+                                <strong>SELECTIVE</strong>
+                                <div class="hours">13:55-14:05</div>
+                                <div class="session">NY Open Only</div>
+                            </div>
+                        </div>
+
+                        <p><strong>⚠️ Reduced Activity:</strong> Pattern weakens during low volatility. Focus only on major session opens.</p>
+
+                        <div class="regime-tip warning">
+                            <strong>⚠️ Caution:</strong> <strong>Reduce position sizes by 50%</strong> or avoid trading during consolidation. Wait for volatility expansion. Consider stopping trading until regime shifts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Universal Hours Table -->
+            <div class="universal-hours">
+                <h3>📋 Universal OB Windows (All Regimes)</h3>
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Window Type</th>
+                            <th>UTC Times</th>
+                            <th>Coverage</th>
+                            <th>Zone Capture %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hourly Turns</strong></td>
+                            <td><code>xx:55-xx:05</code> (every hour)</td>
+                            <td>25% of time</td>
+                            <td>~65%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Half-Hourly</strong></td>
+                            <td><code>xx:30±3</code> (every hour)</td>
+                            <td>8.3% of time</td>
+                            <td>~20%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Combined Total</strong></td>
+                            <td>-</td>
+                            <td><strong>33.3% of time</strong></td>
+                            <td><strong>85.4% of zones</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
 
     <!-- For Traders Section -->

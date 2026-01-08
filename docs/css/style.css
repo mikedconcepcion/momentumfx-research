@@ -869,6 +869,310 @@ section {
 }
 
 /* ===================================
+   DISCLAIMER SECTION
+   =================================== */
+
+.disclaimer-section {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: var(--spacing-xl) 0;
+    border-top: 4px solid var(--warning);
+    border-bottom: 4px solid var(--warning);
+}
+
+.disclaimer-box {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.disclaimer-header {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.disclaimer-icon {
+    font-size: 2rem;
+}
+
+.disclaimer-header h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.disclaimer-content {
+    padding: var(--spacing-xl);
+}
+
+.disclaimer-content > p:first-of-type {
+    font-size: 1.1rem;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.disclaimer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.disclaimer-item {
+    background: var(--gray-50);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+    line-height: 1.6;
+}
+
+.disclaimer-item strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.disclaimer-footer {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border: 2px solid var(--danger);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.disclaimer-footer strong {
+    color: var(--danger);
+}
+
+/* ===================================
+   TRADING HOURS BY REGIME
+   =================================== */
+
+.trading-hours-section {
+    background: var(--gray-50);
+    padding: var(--spacing-2xl) 0;
+}
+
+.regime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.regime-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+}
+
+.regime-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.regime-header {
+    padding: var(--spacing-lg);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.regime-header h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.regime-concentration {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Regime Card Variants */
+.volatile-card .regime-header {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.trending-card .regime-header {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+.ranging-card .regime-header {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.regime-body {
+    padding: var(--spacing-lg);
+}
+
+.regime-desc {
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.regime-body h4 {
+    color: var(--gray-900);
+    font-size: 1.1rem;
+    margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hour-block {
+    background: var(--gray-50);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.hour-block strong {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.hour-block .hours {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: var(--spacing-xs) 0;
+}
+
+.hour-block .session {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+/* Hour Block Priorities */
+.hour-block.critical {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-color: var(--danger);
+}
+
+.hour-block.critical strong {
+    color: var(--danger);
+}
+
+.hour-block.high {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-color: var(--warning);
+}
+
+.hour-block.high strong {
+    color: #92400e;
+}
+
+.hour-block.medium {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: var(--primary);
+}
+
+.hour-block.medium strong {
+    color: var(--primary);
+}
+
+.regime-tip {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-left: 4px solid var(--secondary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+}
+
+.regime-tip.warning {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-left-color: var(--danger);
+}
+
+.regime-tip strong {
+    color: var(--gray-900);
+}
+
+/* Universal Hours Table */
+.universal-hours {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-xl);
+}
+
+.universal-hours h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+}
+
+.hours-table thead {
+    background: var(--gray-100);
+}
+
+.hours-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--gray-800);
+    border-bottom: 2px solid var(--gray-300);
+}
+
+.hours-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-700);
+}
+
+.hours-table code {
+    background: var(--gray-100);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.hours-table .total-row {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    font-weight: 600;
+}
+
+.hours-table .total-row td {
+    color: var(--gray-900);
+    border-bottom: none;
+}
+
+/* ===================================
    FOR TRADERS SECTION
    =================================== */
 
@@ -1249,6 +1553,27 @@ section {
    =================================== */
 
 @media (max-width: 768px) {
+    .disclaimer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .regime-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hours-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hours-table {
+        font-size: 0.85em;
+    }
+
+    .hours-table th,
+    .hours-table td {
+        padding: var(--spacing-sm);
+    }
+
     .trader-grid {
         grid-template-columns: 1fr;
     }
@@ -1276,5 +1601,24 @@ section {
     .sizing-table th,
     .sizing-table td {
         padding: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .disclaimer-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hours-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hour-block {
+        padding: var(--spacing-sm);
+    }
+
+    .regime-concentration {
+        font-size: 0.8rem;
     }
 }
